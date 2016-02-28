@@ -5,7 +5,15 @@ package com.alebaffa.learn.kata;
  */
 public class Player {
 
+    String playerName;
     java.util.Deque<Card> cards = new java.util.ArrayDeque<>();
+    java.util.Deque<Card> pile = new java.util.ArrayDeque<>();
+
+    public Player(String name) {
+        this.playerName = name;
+    }
+
+    public String getPlayerName() { return playerName; }
 
     public boolean hasCards() {
         return cards.size() > 0;
@@ -15,7 +23,5 @@ public class Player {
         cards.push(card);
     }
 
-    public int getNumCards() {
-        return cards.size();
-    }
+    public void pileCard(Card card) {pile.push(card);}
 }

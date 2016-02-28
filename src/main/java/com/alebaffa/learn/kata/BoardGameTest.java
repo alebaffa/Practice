@@ -4,6 +4,24 @@ import static org.junit.Assert.*;
 
 public class BoardGameTest{
 
+    private static final String PLAYER_1_NAME = "player1";
+    private static final String PLAYER_2_NAME = "player2";
+
+    private Player createPlayer1() {
+        Player player = new Player(PLAYER_1_NAME);
+        player.addCard(new Card(2, "Heart"));
+        player.addCard(new Card(2, "Heart"));
+        return player;
+    }
+
+    private Player createPlayer2() {
+
+        Player player2 = new Player(PLAYER_2_NAME);
+        player2.addCard(new Card(1, "Heart"));
+        player2.addCard(new Card(1, "Heart"));
+        return player2;
+    }
+
     @org.junit.Test
     public void testGameNotNull() {
         assertNotEquals(null, new BoardGame(null, null));
@@ -11,40 +29,29 @@ public class BoardGameTest{
 
     @org.junit.Test
     public void testCreateDeckWithOneCard() {
-        BoardGame game = new BoardGame(null, null);
-        assertEquals(1, game.createDeck(1).size());
+        assertEquals(1, new BoardGame(null, null).createDeck(1).size());
     }
 
     @org.junit.Test
     public void testCreateDeckWith52Cards() {
-        BoardGame game = new BoardGame(null, null);
-        assertEquals(52, game.createDeck(52).size());
+        assertEquals(52, new BoardGame(null, null).createDeck(52).size());
     }
 
     @org.junit.Test
     public void testCreatePlayerWithNoCards() {
-        Player player = new Player();
-        assertEquals(false, player.hasCards());
+        assertEquals(false, new Player(PLAYER_1_NAME).hasCards());
     }
 
     @org.junit.Test
     public void testCreatePlayerWithTwoCards() {
-        Player player = new Player();
-        player.addCard(new Card(1, "Heart"));
-        player.addCard(new Card(2, "Heart"));
-        assertEquals(2, player.getNumCards());
-        assertEquals(true, player.hasCards());
+        assertEquals(2, createPlayer1().cards.size());
+        assertEquals(true, createPlayer1().hasCards());
     }
 
     @org.junit.Test
-    public void testPlayer1Wins() {
-        Player player1 = new Player();
-        player1.addCard(new Card(2, "Heart"));
-        Player player2 = new Player();
-        player2.addCard(new Card(1, "Heart"));
-        BoardGame game = new BoardGame(player1, player2);
-
-        assertEquals("player1", game.printWinner());
+    public void testPlayer1WinsWithRoundNoWar() {
+        BoardGame game = new BoardGame(createPlayer1(), createPlayer2());
+        game.playRound();
+        assertEquals(PLAYER_1_NAME, game.printWinner());
     }
-
 }

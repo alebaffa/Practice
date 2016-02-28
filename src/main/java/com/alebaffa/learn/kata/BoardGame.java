@@ -4,8 +4,8 @@ import java.util.*;
 
 public class BoardGame {
 
-    Player player1 = new Player();
-    Player player2 = new Player();
+    Player player1 = new Player("player1");
+    Player player2 = new Player("player2");
 
     public BoardGame(Player player1, Player player2){
         this.player1 = player1;
@@ -19,9 +19,18 @@ public class BoardGame {
     }
 
     public String printWinner() {
-        if(player1.cards.pop().value > player2.cards.pop().value)
-            return "player1";
-        else
-            return "player2";
+        int player1TotCards = player1.cards.size() + player1.pile.size();
+        int player2TotCards = player2.cards.size() + player2.pile.size();
+        return (player1TotCards > player2TotCards) ? player1.getPlayerName() : player2.getPlayerName();
+    }
+
+    public void playRound() {
+        Card topCardPlayer1 = player1.cards.pop();
+        Card topCardPlayer2 = player2.cards.pop();
+
+        if(topCardPlayer1.value > topCardPlayer2.value){
+            player1.pileCard(topCardPlayer2);
+        } else
+            player2.pileCard(topCardPlayer1);
     }
 }
