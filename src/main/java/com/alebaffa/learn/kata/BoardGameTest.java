@@ -1,4 +1,4 @@
-package com.alebaffa.learn.practice.kata;
+package com.alebaffa.learn.kata;
 
 import static org.junit.Assert.*;
 
