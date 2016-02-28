@@ -13,15 +13,13 @@ public class BoardGame {
     }
 
     public List<Card> createDeck(int numCards) {
-        List<Card> list = new ArrayList<>();
-        for (int i = 0; i < numCards; i++) list.add(new Card(1, "test"));
-        return list;
+        List<Card> deck = new ArrayList<>();
+        for (int i = 0; i < numCards; i++) deck.add(new Card(1, "test"));
+        return deck;
     }
 
     public String printWinner() {
-        int player1TotCards = player1.cards.size() + player1.pile.size();
-        int player2TotCards = player2.cards.size() + player2.pile.size();
-        return (player1TotCards > player2TotCards) ? player1.getPlayerName() : player2.getPlayerName();
+        return (player1.getTotalCards() > player2.getTotalCards()) ? player1.getPlayerName() : player2.getPlayerName();
     }
 
     public void playRound() {

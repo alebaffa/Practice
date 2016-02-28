@@ -24,4 +24,6 @@ public class Player {
     }
 
     public void pileCard(Card card) {pile.push(card);}
+
+    public int getTotalCards(){ return cards.size() + pile.size(); }
 }
