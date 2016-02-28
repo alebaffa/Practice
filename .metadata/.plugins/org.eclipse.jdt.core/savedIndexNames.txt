@@ -1,0 +1,1 @@
+INDEX VERSION 1.127+/home/alebaffa/workspace/java/CodeDojoJava/.metadata/.plugins/org.eclipse.jdt.core
