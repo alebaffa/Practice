@@ -1,2 +1,2 @@
-# CodeDojoJava
-My personal code dojo in Java. Set of exercises I'm doing to practice with Java.
+# Practice repo
+Set of various exercises I'm doing to practice my coding skills.
