@@ -1,37 +1,49 @@
 package com.alebaffa.learn.kata;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 /**
  * Created by alebaffa on 2/28/16.
  */
 public class Player {
 
-String playerName;
-private java.util.Deque<Card> cards = new java.util.ArrayDeque<>();
-private java.util.Deque<Card> pile = new java.util.ArrayDeque<>();
+    String playerName;
+    private Deque<Card> cards = new ArrayDeque<>();
+    private Deque<Card> pile = new ArrayDeque<>();
 
-public Player(String name) {
-    this.playerName = name;
-}
+    public Player(String name) {
+        this.playerName = name;
+    }
 
-public String getPlayerName() { return playerName; }
+    public String getPlayerName() { return playerName; }
 
-public boolean hasCards() {
-    return getCards().size() > 0;
-}
+    public int getTotalCards(){ return getCards().size() + getPile().size(); }
 
-public void addCard(Card card) {
-    getCards().push(card);
-}
+    public Deque<Card> getPile() {
+        return pile;
+    }
 
-public void pileCard(Card card) {getPile().push(card);}
+	public void pileCard(Card card) {getPile().push(card);}
 
-public int getTotalCards(){ return getCards().size() + getPile().size(); }
+	public Card popFromPile(){return getPile().pop();}
 
-public java.util.Deque<com.alebaffa.learn.kata.Card> getPile() {
-    return pile;
-}
+	public boolean hasCards() {
+		return getCards().size() > 0;
+	}
 
-public java.util.Deque<com.alebaffa.learn.kata.Card> getCards() {
-    return cards;
-}
+    public Deque<Card> getCards() {
+        return cards;
+    }
+
+	public boolean hasCardsInPile() {
+		return getPile().size() > 0;
+	}
+
+	public void addCard(Card card) {
+		getCards().push(card);
+	}
+
+    public Card popFromCards(){return getCards().pop();}
+
 }
