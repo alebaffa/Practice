@@ -5,11 +5,9 @@ package com.alebaffa.learn.kata;
  */
 public class Card implements Comparable{
 	int value;
-	String seed;
 
-	public Card(int value, String seed){
+	public Card(int value){
 		this.value = value;
-		this.seed = seed;
 	}
 
 	public int getValue() {

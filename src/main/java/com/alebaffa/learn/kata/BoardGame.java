@@ -11,7 +11,11 @@ public class BoardGame {
 	}
 
 	public String printWinner() {
-		return (player1.getTotalCards() > player2.getTotalCards()) ? player1.getPlayerName() : player2.getPlayerName();
+		if(player1.getTotalCards() == 0 && player2.getTotalCards() == 0)
+			return null;
+		else
+			return (player1.getTotalCards() > player2.getTotalCards()) ? player1.getPlayerName() : player2
+					.getPlayerName();
 	}
 
 	public int compareCards(Card player1card, Card player2card) {
@@ -31,17 +35,32 @@ public class BoardGame {
 				playGame();
 			else {
 				if(isWar == 1){
-					while(!player2.hasCardsInPile()){
-						player1.pileCard(player2.popFromPile());
-					}
+					player1WinsCardPlayer2();
 				}
 				else{
-					while(!player1.hasCardsInPile()) {
-						player2.pileCard(player1.popFromPile());
-						return;
-					}
+					player2WinsCardsPlayer1();
 				}
 			}
+		}
+	}
+
+	private void player2WinsCardsPlayer1() {
+		while(player1.hasCardsInPile()) {
+			player2.pileCard(player1.popFromPile());
+			return;
+		}
+	}
+
+	private void player1WinsCardPlayer2() {
+		while(player2.hasCardsInPile()){
+			player1.pileCard(player2.popFromPile());
+		}
+	}
+
+	public void createDeck(int numOfCards) {
+		for(int i = 0; i < 52; i++) {
+			//TODO here I have to create a set of 52 cards and randomly assign 25 to each player.
+			// here comes the concept of seed in Card.
 		}
 	}
 }

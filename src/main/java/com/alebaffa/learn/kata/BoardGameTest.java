@@ -11,16 +11,16 @@ public class BoardGameTest{
 
 	private Player createPlayer1() {
 		Player player = new Player(PLAYER_1_NAME);
-		player.addCard(new Card(2, "Heart"));
-		player.addCard(new Card(2, "Heart"));
+		player.addCard(new Card(2));
+		player.addCard(new Card(2));
 		return player;
 	}
 
 	private Player createPlayer2() {
 
 		Player player2 = new Player(PLAYER_2_NAME);
-		player2.addCard(new Card(1, "Heart"));
-		player2.addCard(new Card(1, "Heart"));
+		player2.addCard(new Card(1));
+		player2.addCard(new Card(1));
 		return player2;
 	}
 
@@ -53,10 +53,10 @@ public class BoardGameTest{
 	@Test
 	public void testGameWithTwoCardsAndPlayer1WinsWithoutWar() {
 		Player player1 = new Player(PLAYER_1_NAME);
-		player1.addCard(new Card(2, "Heart"));
+		player1.addCard(new Card(2));
 
 		Player player2 =new Player(PLAYER_2_NAME);
-		player2.addCard(new Card(1, "Heart"));
+		player2.addCard(new Card(1));
 
 		BoardGame game = new BoardGame(player1, player2);
 		game.playGame();
@@ -67,16 +67,28 @@ public class BoardGameTest{
 	@Test
 	public void testGameWithWar() {
 		Player player1 = new Player(PLAYER_1_NAME);
-		player1.addCard(new Card(2, "Heart"));
-		player1.addCard(new Card(1, "Heart"));
+		player1.addCard(new Card(2));
+		player1.addCard(new Card(1));
 
 		Player player2 =new Player(PLAYER_2_NAME);
-		player2.addCard(new Card(1, "Heart"));
-		player2.addCard(new Card(1, "Heart"));
+		player2.addCard(new Card(1));
+		player2.addCard(new Card(1));
 
 		BoardGame game = new BoardGame(player1, player2);
 		game.playGame();
 
 		assertEquals(PLAYER_1_NAME, game.printWinner());
+	}
+
+	@Test
+	public void testGameWith52RandomCardsForEachPlayer() {
+		Player player1 = new Player(PLAYER_1_NAME);
+		Player player2 =new Player(PLAYER_2_NAME);
+
+		BoardGame game = new BoardGame(player1, player2);
+		game.createDeck(52);
+		game.playGame();
+
+		assertNotNull(game.printWinner());
 	}
 }
