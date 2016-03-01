@@ -5,25 +5,33 @@ package com.alebaffa.learn.kata;
  */
 public class Player {
 
-    String playerName;
-    java.util.Deque<Card> cards = new java.util.ArrayDeque<>();
-    java.util.Deque<Card> pile = new java.util.ArrayDeque<>();
+String playerName;
+private java.util.Deque<Card> cards = new java.util.ArrayDeque<>();
+private java.util.Deque<Card> pile = new java.util.ArrayDeque<>();
 
-    public Player(String name) {
-        this.playerName = name;
-    }
+public Player(String name) {
+    this.playerName = name;
+}
 
-    public String getPlayerName() { return playerName; }
+public String getPlayerName() { return playerName; }
 
-    public boolean hasCards() {
-        return cards.size() > 0;
-    }
+public boolean hasCards() {
+    return getCards().size() > 0;
+}
 
-    public void addCard(Card card) {
-        cards.push(card);
-    }
+public void addCard(Card card) {
+    getCards().push(card);
+}
 
-    public void pileCard(Card card) {pile.push(card);}
+public void pileCard(Card card) {getPile().push(card);}
 
-    public int getTotalCards(){ return cards.size() + pile.size(); }
+public int getTotalCards(){ return getCards().size() + getPile().size(); }
+
+public java.util.Deque<com.alebaffa.learn.kata.Card> getPile() {
+    return pile;
+}
+
+public java.util.Deque<com.alebaffa.learn.kata.Card> getCards() {
+    return cards;
+}
 }
