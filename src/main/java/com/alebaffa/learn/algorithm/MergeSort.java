@@ -1,5 +1,3 @@
-package com.alebaffa.learn.algorithm;
-
 public class MergeSort {
 
     private static void merge(int[] a, int[] aux, int lo, int mid, int hi) {
