@@ -1,10 +1,5 @@
-package com.alebaffa.learn.algorithm;
-
 import java.util.Arrays;
 
-/**
- * Created by alebaffa on 24/11/16.
- */
 public class InsertSort {
 
     public static void main(String[] args) {

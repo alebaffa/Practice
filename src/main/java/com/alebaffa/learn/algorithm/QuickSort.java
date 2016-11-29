@@ -1,7 +1,5 @@
 package com.alebaffa.learn.algorithm;
 
-import java.util.Random;
-
 /**
  * Created by alebaffa on 29/11/16.
  */
