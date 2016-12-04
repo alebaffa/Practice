@@ -1,5 +1,7 @@
 package com.alebaffa.learn.algorithm;
 
+import java.util.Arrays;
+
 /**
  * Created by alebaffa on 29/11/16.
  */
@@ -9,11 +11,14 @@ public class QuickSort {
         int[] a = {4, 2, 1, 7, 8, 5};
 
         quicksort(a, 0, a.length - 1);
+
+        System.out.println(Arrays.toString(a));
     }
 
     private static void quicksort(int[] a, int low, int high) {
         int i = low, j = high;
-        int pivot = a[low + (high - low) / 2];
+        int middle = low + (high - low) / 2;
+        int pivot = a[middle];
 
         while (i <= j){
             while (a[i] < pivot) i++;
@@ -28,12 +33,7 @@ public class QuickSort {
         }
         if (low < j)
             quicksort(a, low, j);
-        if (i > high)
+        if (high > i)
             quicksort(a, i, high);
-
-
-        for (int k = 0; k < a.length; k++) {
-            System.out.println(a[k]);
-        }
     }
 }
